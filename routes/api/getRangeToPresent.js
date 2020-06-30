@@ -1,7 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
+//How Mongo stores date/time
 //2020-06-29T23:54:24.191Z
+
+// POST Route
+// Retrieves from a point in time to present.
+// Access PUBLIC for testing
+
+//Example Request
+// {
+//     "year": 2020,
+//     "month": 5,
+//     "day": 28,
+//     "hour": 0,
+//     "minute": 0,
+//     "second": 0
+// }
 
 router.post("/", async (req, res) => {
   try {

@@ -4,7 +4,7 @@ const connectDB = require("./config/db");
 const express = require("express");
 const app = express();
 
-const getRange = require("./routes/api/getRange");
+const getRangeToPresent = require("./routes/api/getRangeToPresent");
 
 connectDB();
 
@@ -14,4 +14,4 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
 app.use(express.json());
 
-app.use("/api/range", getRange);
+app.use("/api/range", getRangeToPresent);
