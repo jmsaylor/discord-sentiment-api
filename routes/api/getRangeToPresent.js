@@ -4,9 +4,30 @@ const router = express.Router();
 //How Mongo stores date/time
 //2020-06-29T23:54:24.191Z
 
-// POST Route
-// Retrieves from a point in time to present.
-// Access PUBLIC for testing
+//maybe create basic GET route that gets time now and deducts say 24 hours
+
+router.get("/test", async (req, res) => {
+  const records = await Record.find();
+  // .limit(5) // doesn't want to work correct
+  res.send(records);
+});
+
+router.get("/", async (req, res) => {
+  try {
+    let time = new Date();
+    console.log(time);
+    time.setHours(time.getHours() - 24);
+    const records = Record.find();
+    console.log(time);
+    res.send(time);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// ROUTE: POST
+// DESCRIPTION: Retrieves from a point in time to present.
+// ACCESS: PUBLIC for testing
 
 //Example Request
 // {
@@ -18,7 +39,7 @@ const router = express.Router();
 //     "second": 0
 // }
 
-router.post("/", async (req, res) => {
+router.post("/range", async (req, res) => {
   try {
     const { year, month, day, hour, minute, second } = req.body;
     console.log(
