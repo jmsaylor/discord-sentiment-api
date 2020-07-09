@@ -4,7 +4,7 @@ const RecordSchema = new mongoose.Schema(
   {
     text: String,
     score: Number,
-    user: Number,
+    // user: Number,
   },
   { timestamps: true }
 );
